@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script> 
+
+ const cpuWin = "You lose! Computer wins.";
+ const p1Win = "You win!";
+const tie = "tie";
+let p1Score = 0; 
+let cpuScore = 0; 
+
+function getComputerChoice() {
+
+let cpuRock = "rock"; 
+let cpuPaper = "paper"; 
+let cpuScissors = "scissors"; 
+
+let cpuChoice = Math.floor(Math.random() * 3); 
+
+    if (cpuChoice == 0) {
+    return cpuRock; 
+    }
+    else if (cpuChoice == 1) {
+
+    return cpuPaper;
+    }
+
+    else {
+        return cpuScissors; 
+        }
+}
+
+
+function playRound() {
+
+    const computerSelection = getComputerChoice(); 
+    let playerSelection = prompt("enter your choice!"); 
+    
+    const caseSensitiveRock = "rock"; 
+    const caseSensitivePaper = "paper";
+    const caseSensitiveScissors = "scissors";
+ 
+    
+    
+
+    if (playerSelection.toLowerCase() === caseSensitiveRock.toLowerCase()) {
+        console.log(playerSelection.toLowerCase()); 
+    }
+    else if (playerSelection.toLowerCase() === caseSensitivePaper.toLowerCase()) {
+        console.log(playerSelection.toLowerCase()); 
+    } else if (playerSelection.toLowerCase() === caseSensitiveScissors.toLowerCase()) {
+        console.log(playerSelection.toLowerCase()); 
+    } else {
+        alert("please enter rock, paper, or scissors, with no spaces.")
+        return playerSelection;
+    }
+
+    console.log(computerSelection)
+
+    let result = "string";
+
+    if (playerSelection === computerSelection) {
+        result = tie;
+        return result; 
+    } else if (playerSelection == "rock" && computerSelection == "scissors") {
+        result = p1Win + " rocks crush scissors"; 
+        p1Score++;
+        return result; 
+    } else if (playerSelection == "scissors" && computerSelection == "paper") {
+        result = p1Win + " scissors shred paper";
+        p1Score++;
+        return result; 
+    } else if (playerSelection == "paper" && computerSelection == "rock") {
+        result = p1Win + " paper covers rock"; 
+        p1Score++;
+        return result; 
+    } else {
+        result = cpuWin; 
+        cpuScore++;
+        return result; 
+    }
+
+}
+
+function win() {
+    if (p1Score == 5) {
+       console.log("victory")
+       return 
+    } else if (cpuScore == 5) {
+        console.log("defeat. Refresh the page.")
+        return 
+    }
+}
+
+function game() {
+
+    let i = p1Score; 
+    let x = cpuScore;
+
+    do {
+    console.log(playRound())
+    win();
+    } while (i<5 && x<5); 
+   
+    
+  
+}
+
+console.log(game())
+
+
+</script> 
+</html>
